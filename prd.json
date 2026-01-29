@@ -1,49 +1,54 @@
 {
-  "project": "Ben Sprint - Dashboard & Skills",
-  "branchName": "ralph/sprint-dashboard",
-  "description": "Dashboard improvements and skill integration",
+  "project": "Ben Sprint - Dashboard Polish & News",
+  "description": "Dashboard improvements and news integration",
+  "branchName": "ralph/sprint-dashboard-polish",
   "userStories": [
     {
       "id": "US-001",
-      "title": "Dashboard diagram generation API endpoint",
-      "description": "Add a simple HTTP endpoint to the dashboard server that runs generate_diagram.py and returns the SVG",
+      "title": "News feed dashboard page",
+      "description": "Create news-feed.html page that displays the daily news markdown files from news/ directory",
       "acceptanceCriteria": [
-        "POST /api/diagram accepts {text, type, style} JSON body",
-        "Runs generate_diagram.py with provided parameters",
-        "Returns SVG content or file path",
-        "Error handling for failed generation"
+        "news-feed.html exists in dashboard/",
+        "Loads and renders the latest news/YYYY-MM-DD.md file",
+        "Shows date picker or links to previous days",
+        "Styled consistently with other dashboard pages",
+        "Added to portal.html quick links"
       ],
       "priority": 1,
       "passes": false,
-      "notes": "Dashboard runs on Python HTTP server at localhost:8888"
+      "notes": "News files already exist in news/ directory as markdown"
     },
     {
       "id": "US-002",
-      "title": "Wire diagram-viewer Generate button to API",
-      "description": "Connect the Generate button in diagram-viewer.html to the /api/diagram endpoint",
+      "title": "Dashboard status overview page",
+      "description": "Create a status.html page showing system health: cron jobs, Ralph status, model status, disk usage",
       "acceptanceCriteria": [
-        "Generate button sends POST to /api/diagram",
-        "Shows loading state while generating",
-        "Displays generated diagram in the grid",
-        "Can download generated SVG"
+        "status.html exists in dashboard/",
+        "Shows Ralph status from ralph/status.json",
+        "Shows cron job list (reads from status API or static)",
+        "Shows disk usage summary",
+        "Shows Ollama model list",
+        "Added to portal.html quick links"
       ],
       "priority": 2,
       "passes": false,
-      "notes": "Currently shows CLI command instead of calling API"
+      "notes": "Ralph writes status.json, Ollama at localhost:11434"
     },
     {
       "id": "US-003",
-      "title": "Auto-scan diagrams folder for viewer",
-      "description": "Diagram viewer should auto-discover all SVGs in diagrams/ folder",
+      "title": "Training data dashboard page",
+      "description": "Create training-data.html showing knowledge pipeline stats: repos indexed, transcripts mined, training pairs generated",
       "acceptanceCriteria": [
-        "GET /api/diagrams returns list of all SVG files",
-        "Viewer loads all diagrams dynamically",
-        "Shows file size and creation date",
-        "No hardcoded file list"
+        "training-data.html exists in dashboard/",
+        "Shows count of training pairs from knowledge/training/",
+        "Shows count of transcripts from knowledge/transcripts/",
+        "Shows count of repos from knowledge/repos/",
+        "Shows sample training pairs",
+        "Added to portal.html quick links"
       ],
       "priority": 3,
       "passes": false,
-      "notes": "Currently has hardcoded list of known files"
+      "notes": "Training data in knowledge/training/*.json"
     }
   ]
 }

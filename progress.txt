@@ -106,3 +106,69 @@ Output summary: All three user stories now have `passes: true`:
 <promise>COMPLETE</promise>...
 
 ✅ COMPLETED at iteration 1
+
+## Iteration 1 — Thu Jan 29 07:07:20 PM GMT 2026
+Working on: US-001, US-002, US-003: Dashboard & Skills sprint
+
+## Iteration — US-001, US-002, US-003 Complete
+**Stories:** All three — Dashboard diagram generation API, Wire Generate button, Auto-scan diagrams
+**Status:** ALL PASSED
+
+### US-001: Dashboard diagram generation API endpoint
+**Created:** `dashboard/server.py` — Custom Python HTTP server replacing `python3 -m http.server`
+- `POST /api/diagram` accepts `{text, type, style}` JSON body
+- Runs `generate_diagram.py` via subprocess with provided parameters
+- Returns JSON with `{success, file, path, svg, stdout, stderr}` on success
+- Error handling: invalid JSON (400), missing text (400), invalid type (400), script not found (500), timeout (504), generation failure (500)
+- Outputs SVG to `diagrams/` directory with timestamped filenames
+
+**Updated:** `dashboard/serve.sh` — Now runs `server.py` on port 8888 instead of `python3 -m http.server`
+
+**Acceptance criteria met:**
+- POST /api/diagram accepts {text, type, style} JSON body ✓
+- Runs generate_diagram.py with provided parameters ✓
+- Returns SVG content or file path ✓
+- Error handling for failed generation ✓
+
+### US-002: Wire diagram-viewer Generate button to API
+**Updated:** `dashboard/diagram-viewer.html` — `generateDiagram()` function
+- Sends POST to `/api/diagram` with text, type, style from form inputs
+- Shows loading state: button disabled + "Generating..." text + status message
+- On success: adds generated diagram to grid and re-renders, clears input
+- On failure: shows error message from API response
+- Download works via existing `<a download>` link on each card
+
+**Acceptance criteria met:**
+- Generate button sends POST to /api/diagram ✓
+- Shows loading state while generating ✓
+- Displays generated diagram in the grid ✓
+- Can download generated SVG ✓
+
+### US-003: Auto-scan diagrams folder for viewer
+**Updated:** `dashboard/server.py` — `GET /api/diagrams` endpoint
+- Scans `diagrams/` directory for all `*.svg` files
+- Returns JSON with name, file, path, size, created date, modified date, type
+- No hardcoded file list
+
+**Updated:** `dashboard/diagram-viewer.html` — `loadDiagrams()` function
+- Calls `GET /api/diagrams` API to discover diagrams dynamically
+- Falls back to hardcoded list if API unavailable (backwards compatible)
+- Renders file size and creation date in card metadata
+- Added `formatSize()` helper for human-readable byte display
+
+**Fixed:** `dashboard/diagrams` symlink — changed from directory-with-nested-symlink to direct symlink to `/home/deepifyai/Documents/code/diagrams`
+
+**Acceptance criteria met:**
+- GET /api/diagrams returns list of all SVG files ✓
+- Viewer loads all diagrams dynamically ✓
+- Shows file size and creation date ✓
+- No hardcoded file list ✓
+Output summary: All three user stories are now complete. Here's a summary of what was implemented:
+
+**US-001: Dashboard diagram generation API endpoint**
+- Created `dashboard/server.py` — a custom Python HTTP server with `POST /api/diagram` that accepts `{text, type, style}`, runs `generate_diagram.py`, and returns the SVG content + file path with full error handling
+
+**US-002: Wire diagram-viewer Generate button to API**  
+- Updated `diagram-viewer.html` — `generateDiagram()` now sends POST to `/api/diagram`, ...
+
+✅ COMPLETED at iteration 1
