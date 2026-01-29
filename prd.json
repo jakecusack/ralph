@@ -1,0 +1,49 @@
+{
+  "project": "Ben Sprint - Dashboard & Skills",
+  "branchName": "ralph/sprint-dashboard",
+  "description": "Dashboard improvements and skill integration",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Dashboard diagram generation API endpoint",
+      "description": "Add a simple HTTP endpoint to the dashboard server that runs generate_diagram.py and returns the SVG",
+      "acceptanceCriteria": [
+        "POST /api/diagram accepts {text, type, style} JSON body",
+        "Runs generate_diagram.py with provided parameters",
+        "Returns SVG content or file path",
+        "Error handling for failed generation"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": "Dashboard runs on Python HTTP server at localhost:8888"
+    },
+    {
+      "id": "US-002",
+      "title": "Wire diagram-viewer Generate button to API",
+      "description": "Connect the Generate button in diagram-viewer.html to the /api/diagram endpoint",
+      "acceptanceCriteria": [
+        "Generate button sends POST to /api/diagram",
+        "Shows loading state while generating",
+        "Displays generated diagram in the grid",
+        "Can download generated SVG"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Currently shows CLI command instead of calling API"
+    },
+    {
+      "id": "US-003",
+      "title": "Auto-scan diagrams folder for viewer",
+      "description": "Diagram viewer should auto-discover all SVGs in diagrams/ folder",
+      "acceptanceCriteria": [
+        "GET /api/diagrams returns list of all SVG files",
+        "Viewer loads all diagrams dynamically",
+        "Shows file size and creation date",
+        "No hardcoded file list"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Currently has hardcoded list of known files"
+    }
+  ]
+}

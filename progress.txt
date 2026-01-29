@@ -1,0 +1,108 @@
+# Ralph Progress Log (Claude Code)
+Started: Thu Jan 29 05:20:40 PM GMT 2026
+PRD: Complete the Sprint Board feature - fix remaining issues
+---
+
+## Iteration 1 — Thu Jan 29 05:20:40 PM GMT 2026
+Output summary: API Error: 401 {"type":"error","error":{"type":"authentication_error","message":"OAuth token has expired. Please obtain a new token or refresh your existing token."},"request_id":"req_011CXc44qDqPWEFhzHHR7RZu"} · Please run /login...
+Max iterations reached
+
+## Iteration 1 — Thu Jan 29 05:27:29 PM GMT 2026
+
+## Iteration 1 — Thu Jan 29 05:31:58 PM GMT 2026
+
+## Iteration — US-001 Complete
+**Story:** US-001 - Fix drag-drop between all columns
+**Status:** PASSED
+
+**Changes made to dashboard/sprint-board.html:**
+1. Added `.column-body.drag-over` CSS class for better visual feedback (dashed border + highlighted background)
+2. Refactored drag-drop event handlers into named functions (handleDragOver, handleDragLeave, handleDrop)
+3. Added `setupDragAndDrop()` function that properly attaches event listeners to all column bodies
+4. Fixed dragLeave to only remove highlight when actually leaving the column (checking e.relatedTarget)
+5. Added `e.stopPropagation()` and `e.dataTransfer.dropEffect = 'move'` for better browser compatibility
+6. Added validation in handleDrop to check id and newStatus before moving
+
+**All acceptance criteria met:**
+- Drag from Backlog to In Progress works ✓
+- Drag from In Progress to Ready for Ralph works ✓
+- Drag from any column to Done works ✓
+- Visual feedback on drag over ✓ (dashed blue border + background highlight)
+Output summary: US-001 is now marked as `passes: true`. There are still 2 stories remaining with `passes: false`:
+- US-002: Add acceptance criteria editor to Edit modal
+- US-003: Add branch name field to cards
+
+Since stories remain incomplete, I'll end normally and let the loop continue.
+
+**Summary of completed work:**
+
+Completed **US-001: Fix drag-drop between all columns**
+
+Changes made to `dashboard/sprint-board.html`:
+1. Added `.column-body.drag-over` CSS class for better visual feedback (dashed blue border...
+Max iterations reached
+
+## Iteration 1 — Thu Jan 29 05:33:59 PM GMT 2026
+
+## Iteration — US-002 Complete
+**Story:** US-002 - Add acceptance criteria editor to Edit modal
+**Status:** PASSED
+
+**Changes made to dashboard/sprint-board.html:**
+1. Added new Edit modal HTML with fields for title, description, progress, and acceptance criteria
+2. Added CSS for `.criteria-item` and `.criteria-remove` button styling
+3. Replaced simple `editItem()` prompt with full modal-based editing:
+   - `editItem(id)` - opens modal and populates with item data
+   - `closeEditModal()` - closes modal and clears state
+   - `renderCriteriaList()` - displays current criteria with remove buttons
+   - `addCriterion()` - adds new criterion from input field
+   - `removeCriterion(index)` - removes criterion at index
+   - `saveEditItem()` - saves all changes including criteria back to item
+4. Updated keyboard shortcuts to close edit modal on Escape and add criteria on Enter
+
+**All acceptance criteria met:**
+- Edit modal shows current acceptance criteria ✓
+- Can add new criteria ✓ (input field + Add button, Enter key support)
+- Can remove existing criteria ✓ (✕ button on each criterion)
+- Saves on close ✓ (Save Changes button persists to localStorage)
+
+Output summary: **Summary:**
+
+Completed **US-002: Add acceptance criteria editor to Edit modal**
+
+Changes made to `dashboard/sprint-board.html`:
+1. Added new Edit modal with fields for title, description, progress, and acceptance criteria
+2. Added CSS for criteria list items with remove buttons
+3. Replaced simple prompt-based editing with full modal implementation
+4. Added keyboard shortcuts (Escape to close, Enter to add criteria)
+
+**All acceptance criteria met:**
+- Edit modal shows current acceptance criteria...
+Max iterations reached
+
+## Iteration 1 — Thu Jan 29 05:36:45 PM GMT 2026
+
+## Iteration — US-003 Complete
+**Story:** US-003 - Add branch name field to cards
+**Status:** PASSED
+
+**Changes made to dashboard/sprint-board.html:**
+1. Added `.card-branch` CSS class for styling branch name display (purple monospace font)
+2. Added branch name display to card rendering: shows "🌿 {branchName}" when present
+3. Added "Branch Name" input field to Edit modal (id="edit-item-branch")
+4. Updated `editItem()` function to populate branch name field from item data
+5. Updated `saveEditItem()` function to save branch name back to item
+6. Enhanced `generatePRD()` to include branchName in each user story export
+
+**All acceptance criteria met:**
+- Branch name visible on card ✓ (displayed with 🌿 icon in purple monospace)
+- Editable in Edit modal ✓ (new input field with placeholder)
+- Used in PRD export ✓ (included at both project level and per-story level)
+Output summary: All three user stories now have `passes: true`:
+- US-001: passes: true
+- US-002: passes: true
+- US-003: passes: true
+
+<promise>COMPLETE</promise>...
+
+✅ COMPLETED at iteration 1
