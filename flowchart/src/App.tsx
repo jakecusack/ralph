@@ -17,6 +17,8 @@ import {
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import './App.css';
+import SprintBoard from './SprintBoard';
+import './SprintBoard.css';
 
 const nodeWidth = 240;
 const nodeHeight = 70;
@@ -225,7 +227,10 @@ function createNoteNode(note: typeof notes[0], visible: boolean, position?: { x:
   };
 }
 
+type AppView = 'flowchart' | 'sprint-board';
+
 function App() {
+  const [currentView, setCurrentView] = useState<AppView>('sprint-board');
   const [visibleCount, setVisibleCount] = useState(1);
   const nodePositions = useRef<{ [key: string]: { x: number; y: number } }>({ ...positions });
 
@@ -322,55 +327,93 @@ function App() {
     setEdges(edgeConnections.map((conn, index) => createEdge(conn, index < 0)));
   }, [setNodes, setEdges]);
 
+  if (currentView === 'sprint-board') {
+    return (
+      <div className="app-wrapper">
+        <nav className="app-nav">
+          <button
+            className={currentView === 'flowchart' ? 'active' : ''}
+            onClick={() => setCurrentView('flowchart')}
+          >
+            Flowchart
+          </button>
+          <button
+            className={currentView === 'sprint-board' ? 'active' : ''}
+            onClick={() => setCurrentView('sprint-board')}
+          >
+            Sprint Board
+          </button>
+        </nav>
+        <SprintBoard />
+      </div>
+    );
+  }
+
   return (
-    <div className="app-container">
-      <div className="header">
-        <h1>How Ralph Works with Amp</h1>
-        <p>Autonomous AI agent loop for completing PRDs</p>
-      </div>
-      <div className="flow-container">
-        <ReactFlow
-          nodes={nodes}
-          edges={edges}
-          nodeTypes={nodeTypes}
-          onNodesChange={onNodesChange}
-          onEdgesChange={onEdgesChange}
-          onConnect={onConnect}
-          onReconnect={onReconnect}
-          fitView
-          fitViewOptions={{ padding: 0.2 }}
-          nodesDraggable={true}
-          nodesConnectable={true}
-          edgesReconnectable={true}
-          elementsSelectable={true}
-          deleteKeyCode={['Backspace', 'Delete']}
-          panOnDrag={true}
-          panOnScroll={true}
-          zoomOnScroll={true}
-          zoomOnPinch={true}
-          zoomOnDoubleClick={true}
-          selectNodesOnDrag={false}
+    <div className="app-wrapper">
+      <nav className="app-nav">
+        <button
+          className={currentView === 'flowchart' ? 'active' : ''}
+          onClick={() => setCurrentView('flowchart')}
         >
-          <Background variant={BackgroundVariant.Dots} gap={20} size={1} color="#ddd" />
-          <Controls showInteractive={false} />
-        </ReactFlow>
-      </div>
-      <div className="controls">
-        <button onClick={handlePrev} disabled={visibleCount <= 1}>
-          Previous
+          Flowchart
         </button>
-        <span className="step-counter">
-          Step {visibleCount} of {allSteps.length}
-        </span>
-        <button onClick={handleNext} disabled={visibleCount >= allSteps.length}>
-          Next
+        <button
+          className={currentView === 'sprint-board' ? 'active' : ''}
+          onClick={() => setCurrentView('sprint-board')}
+        >
+          Sprint Board
         </button>
-        <button onClick={handleReset} className="reset-btn">
-          Reset
-        </button>
-      </div>
-      <div className="instructions">
-        Click Next to reveal each step
+      </nav>
+      <div className="app-container">
+        <div className="header">
+          <h1>How Ralph Works with Amp</h1>
+          <p>Autonomous AI agent loop for completing PRDs</p>
+        </div>
+        <div className="flow-container">
+          <ReactFlow
+            nodes={nodes}
+            edges={edges}
+            nodeTypes={nodeTypes}
+            onNodesChange={onNodesChange}
+            onEdgesChange={onEdgesChange}
+            onConnect={onConnect}
+            onReconnect={onReconnect}
+            fitView
+            fitViewOptions={{ padding: 0.2 }}
+            nodesDraggable={true}
+            nodesConnectable={true}
+            edgesReconnectable={true}
+            elementsSelectable={true}
+            deleteKeyCode={['Backspace', 'Delete']}
+            panOnDrag={true}
+            panOnScroll={true}
+            zoomOnScroll={true}
+            zoomOnPinch={true}
+            zoomOnDoubleClick={true}
+            selectNodesOnDrag={false}
+          >
+            <Background variant={BackgroundVariant.Dots} gap={20} size={1} color="#ddd" />
+            <Controls showInteractive={false} />
+          </ReactFlow>
+        </div>
+        <div className="controls">
+          <button onClick={handlePrev} disabled={visibleCount <= 1}>
+            Previous
+          </button>
+          <span className="step-counter">
+            Step {visibleCount} of {allSteps.length}
+          </span>
+          <button onClick={handleNext} disabled={visibleCount >= allSteps.length}>
+            Next
+          </button>
+          <button onClick={handleReset} className="reset-btn">
+            Reset
+          </button>
+        </div>
+        <div className="instructions">
+          Click Next to reveal each step
+        </div>
       </div>
     </div>
   );
