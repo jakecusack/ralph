@@ -1,54 +1,59 @@
 {
-  "project": "Ben Sprint - Dashboard Polish & News",
-  "description": "Dashboard improvements and news integration",
-  "branchName": "ralph/sprint-dashboard-polish",
+  "project": "Team in a Box - Agent Swarms",
+  "description": "Multi-agent swarm orchestration for Team in a Box platform. Enables Opus 4.6 orchestrators to coordinate Sonnet 4.5 workers for complex task execution.",
+  "branchName": "feature/agent-swarms",
+  "version": "1.0",
   "userStories": [
     {
-      "id": "US-001",
-      "title": "News feed dashboard page",
-      "description": "Create news-feed.html page that displays the daily news markdown files from news/ directory",
-      "acceptanceCriteria": [
-        "news-feed.html exists in dashboard/",
-        "Loads and renders the latest news/YYYY-MM-DD.md file",
-        "Shows date picker or links to previous days",
-        "Styled consistently with other dashboard pages",
-        "Added to portal.html quick links"
-      ],
+      "id": "SWARM-001",
+      "title": "Agent Swarm Orchestrator - Base Implementation",
+      "description": "Create the core swarm coordinator class that manages multi-agent task execution",
       "priority": 1,
-      "passes": false,
-      "notes": "News files already exist in news/ directory as markdown"
+      "acceptance_criteria": [
+        "SwarmOrchestrator class exists in src/lib/swarm/orchestrator.ts",
+        "Can create a swarm with 1 orchestrator + N workers",
+        "Task assignment and progress monitoring works",
+        "Messages flow between orchestrator and workers",
+        "Results aggregate correctly",
+        "Model routing assigns Opus vs Sonnet appropriately"
+      ],
+      "prp_file": "prps/swarm-orchestrator.json",
+      "passes": false
     },
     {
-      "id": "US-002",
-      "title": "Dashboard status overview page",
-      "description": "Create a status.html page showing system health: cron jobs, Ralph status, model status, disk usage",
-      "acceptanceCriteria": [
-        "status.html exists in dashboard/",
-        "Shows Ralph status from ralph/status.json",
-        "Shows cron job list (reads from status API or static)",
-        "Shows disk usage summary",
-        "Shows Ollama model list",
-        "Added to portal.html quick links"
-      ],
+      "id": "SWARM-002",
+      "title": "Multi-Agent Chat Interface",
+      "description": "Build real-time UI for viewing swarm activity, agent status, and message history",
       "priority": 2,
-      "passes": false,
-      "notes": "Ralph writes status.json, Ollama at localhost:11434"
+      "acceptance_criteria": [
+        "SwarmChat page renders at /swarm-chat",
+        "Shows list of active swarms with status",
+        "Agent status cards display current work",
+        "Message log shows agent-to-agent communication",
+        "Can filter messages by agent or type",
+        "Real-time updates as swarm progresses"
+      ],
+      "prp_file": "prps/swarm-chat-ui.json",
+      "passes": false
     },
     {
-      "id": "US-003",
-      "title": "Training data dashboard page",
-      "description": "Create training-data.html showing knowledge pipeline stats: repos indexed, transcripts mined, training pairs generated",
-      "acceptanceCriteria": [
-        "training-data.html exists in dashboard/",
-        "Shows count of training pairs from knowledge/training/",
-        "Shows count of transcripts from knowledge/transcripts/",
-        "Shows count of repos from knowledge/repos/",
-        "Shows sample training pairs",
-        "Added to portal.html quick links"
-      ],
+      "id": "SWARM-003",
+      "title": "Swarm Configuration Builder",
+      "description": "UI to define agent roles, capabilities, task routing rules, and model assignments",
       "priority": 3,
-      "passes": false,
-      "notes": "Training data in knowledge/training/*.json"
+      "acceptance_criteria": [
+        "SwarmConfig page renders at /swarm-config",
+        "Can select agents from employeeData.ts",
+        "Can assign orchestrator and worker roles",
+        "Can define capabilities and routing rules",
+        "Can save/load swarm configurations",
+        "Validation prevents invalid configs"
+      ],
+      "prp_file": "prps/swarm-config-builder.json",
+      "passes": false
     }
-  ]
+  ],
+  "target_codebase": "/home/deepifyai/Documents/code/deepify-ai",
+  "estimated_time": "8-10 hours total",
+  "success_criteria": "All 3 stories pass validation. Can create and run a working swarm via UI."
 }

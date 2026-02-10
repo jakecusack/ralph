@@ -172,3 +172,599 @@ Output summary: All three user stories are now complete. Here's a summary of wha
 - Updated `diagram-viewer.html` — `generateDiagram()` now sends POST to `/api/diagram`, ...
 
 ✅ COMPLETED at iteration 1
+
+## Iteration 1 — Mon Feb  2 10:00:30 PM GMT 2026
+Working on: US-001: News feed dashboard page
+
+## Iteration — US-001, US-002, US-003 Complete
+**Stories:** All three — News feed, System status, Training data dashboard pages
+**Status:** ALL PASSED
+
+### US-001: News feed dashboard page
+**Created:** `dashboard/news-feed.html`
+- Loads and renders markdown news files from `news/` directory
+- Auto-discovers available date files by probing `news/YYYY-MM-DD.md` for last 30 days
+- Prev/Next navigation buttons between available dates
+- Clickable date links for all available news days
+- Simple markdown-to-HTML renderer for news format (headings, bold, links, italic, hr)
+- Starts on latest available date
+- Dark theme consistent with other dashboard pages
+
+**Updated:** `dashboard/portal.html` — Added "News Feed" card to Content & Creation section
+
+**Acceptance criteria met:**
+- news-feed.html exists in dashboard/ ✓
+- Loads and renders the latest news/YYYY-MM-DD.md file ✓
+- Shows date picker or links to previous days ✓ (date link bar + prev/next buttons)
+- Styled consistently with other dashboard pages ✓ (same dark theme, nav pattern)
+- Added to portal.html quick links ✓
+
+### US-002: Dashboard status overview page
+**Created:** `dashboard/status.html`
+- Shows Ralph status from `ralph/status.json` (state, current task, progress, iteration, timestamps)
+- Shows 11 cron jobs in a table (schedule + description)
+- Shows disk usage (with API support or static fallback listing key directories)
+- Shows Ollama models from `localhost:11434/api/tags` (name + size)
+- Refresh All button to reload everything
+- Color-coded status indicators (green/yellow/red dots)
+
+**Updated:** `dashboard/portal.html` — Added "System Status" card to Security & Infrastructure section
+
+**Acceptance criteria met:**
+- status.html exists in dashboard/ ✓
+- Shows Ralph status from ralph/status.json ✓
+- Shows cron job list ✓ (static list of 11 known jobs)
+- Shows disk usage summary ✓ (API or static fallback)
+- Shows Ollama model list ✓ (fetches from localhost:11434)
+- Added to portal.html quick links ✓
+
+### US-003: Training data dashboard page
+**Created:** `dashboard/training-data.html`
+- Top stats row: training pair count, transcript count, repo count, export format count
+- Category breakdown with horizontal bar chart from `training_pairs_raw.json`
+- 5 sample training pairs (randomized, one per category) showing instruction/output/category
+- Repos indexed list (shows first 15 of 65 with "... and X more" note)
+- Training files list with descriptions (3 formats + stats + transcripts)
+- Loads data from `knowledge/training/training_pairs_raw.json`
+
+**Updated:** `dashboard/portal.html` — Added "Training Data" card to Second Brain section
+
+**Acceptance criteria met:**
+- training-data.html exists in dashboard/ ✓
+- Shows count of training pairs from knowledge/training/ ✓ (326 pairs)
+- Shows count of transcripts from knowledge/transcripts/ ✓ (2 files)
+- Shows count of repos from knowledge/repos/ ✓ (65 repos)
+- Shows sample training pairs ✓ (5 random samples from different categories)
+- Added to portal.html quick links ✓
+Output summary: All three user stories now have `passes: true`:
+- US-001: passes: true
+- US-002: passes: true
+- US-003: passes: true
+
+<promise>COMPLETE</promise>...
+
+✅ COMPLETED at iteration 1
+
+## Iteration 1 — Tue Feb  3 08:55:42 AM GMT 2026
+Working on: US-WS1-001: Audit Tribe AI & Define Service Showcase Sitemap
+
+## Iteration 1 — Tue Feb  3 08:57:57 AM GMT 2026
+Working on: US-WS1-001: Audit Tribe AI & Define Service Showcase Sitemap
+
+## Iteration — US-WS1-001, US-WS1-002, US-WS1-003, US-WS1-004 Complete
+**Stories:** All four — Tribe AI Audit, Subscriber Capture, Brand Identity, Showcase Page Spec
+**Status:** ALL PASSED
+
+### US-WS1-001: Audit Tribe AI & Define Service Showcase Sitemap
+**Created:** `tasks/ws1-website-brand/tribe-ai-audit.md` (6,503 bytes)
+- Documented Tribe AI homepage structure: hero, client logos, value props, talent section, partners, testimonials, press, CTAs
+- Mapped navigation: Industries (4), Partners (3), Resources (2), Join Tribe (2), Company (4)
+- Analyzed 8 core service capabilities and 7 industry verticals
+- Documented design stack: Work Sans + IBM Plex fonts, dark backgrounds, Swiper.js, Lenis
+- Competitive analysis: what Tribe does well vs what Deepify should do differently
+
+**Created:** `tasks/ws1-website-brand/service-mapping.md` (7,659 bytes)
+- Mapped 7 Tribe AI service areas to Deepify R&D equivalents:
+  1. Full AI Product Dev → AI-Augmented Development Lab
+  2. Digital Assistants → Voice AI Research Lab
+  3. RAG & Knowledge Assistants → Second Brain Research
+  4. Model Evaluation & Fine-Tuning → ML Experimentation Lab
+  5. Agents & Workflow Optimization → Agent Architecture Research
+  6. (No Tribe equivalent) → Mobile AI Lab
+  7. Blog + Case Studies → Research Publications & Tutorials
+- Each mapping includes demo concept and key differentiator
+
+**Created:** `tasks/ws1-website-brand/deepify-sitemap.md` (12,754 bytes)
+- 14-page sitemap: Home, About, 6 Lab pages, 3 Learn pages, Subscribe, Connect
+- Each page has: purpose, section breakdown, demo/example concept, responsive notes
+- Navigation design: primary nav with Lab and Learn dropdowns
+- Internal linking strategy connecting Lab ↔ Learn ↔ Subscribe
+
+### US-WS1-002: Design Subscriber Capture Flow
+**Created:** `tasks/ws1-website-brand/subscriber-capture.md` (9,580 bytes)
+- Defined "The Lab Digest" value proposition: monthly email with experiment write-up, lab updates, personal insight, recommended resource
+- Designed 3-tier capture mechanism: dedicated /subscribe page, footer CTA on all pages, inline CTAs on content pages
+- Compared 3 email platforms: Buttondown (recommended), ConvertKit, Resend
+- Designed confirmation flow: submit → confirm email → welcome email → monthly digest
+- Listed what NOT to do: no pop-ups, no urgency, no gated content, no nurture sequences
+
+**Created:** `tasks/ws1-website-brand/landing-page-copy.md` (5,841 bytes)
+- Complete landing page copy: headline, subheadline, body, CTA, microcopy
+- "What You'll Receive" section with 4 content types
+- Full sample email preview (Lab Digest #7)
+- FAQ section with 5 questions
+- 4 A/B test variations for headline/CTA
+- Copy guidelines: words to use and words to avoid
+
+### US-WS1-003: Build Deepify AI Brand Identity Kit
+**Created:** `tasks/ws1-website-brand/brand-identity.md` (10,609 bytes)
+- Color palette: 9 named colors (3 primary, 3 secondary, 3 surface) + gradient
+- Typography: Space Grotesk (display), Inter (body), JetBrains Mono (code) — all Google Fonts
+- Full type scale with sizes, weights, and line heights
+- Visual direction: "Research Lab at Night" aesthetic
+- Cross-platform guidelines: website, YouTube, LinkedIn, GitHub, email
+- Logo concept brief for future design
+
+**Created:** `tasks/ws1-website-brand/brand-colors.json` (3,039 bytes)
+- Valid JSON with 9 named colors
+- Each color has: name, hex, RGB, usage context, CSS variable name
+- Organized into primary, secondary, surface groups + gradient
+
+**Created:** `tasks/ws1-website-brand/tone-of-voice.md` (9,908 bytes)
+- 5 core personality traits with examples: Curious, Direct, Technical, Honest, Understated
+- Dos and Don'ts table with specific examples for each
+- 5 example paragraphs (good vs bad) covering: research intros, experiment results, blog posts, technical descriptions, acknowledging limitations
+- Writing checklist with 10 quality checks
+- Platform-specific tone adjustments for website, YouTube, LinkedIn, email, GitHub
+
+### US-WS1-004: Prototype Service Showcase Page Spec
+**Created:** `tasks/ws1-website-brand/showcase-page-spec.md` (8,045 bytes)
+- Chose AI-Augmented Development as strongest showcase area (with rationale)
+- 9-section page specification: Hero, Thesis, How It Works, Live Sprint Board, Case Study, Tech Stack, Findings, Related Research, Subscribe CTA
+- SEO metadata, performance targets, responsive design notes
+- Case study uses real data from Feb 2 2026 Ralph run (3 stories, 1 iteration, 18/18 criteria)
+
+**Created:** `tasks/ws1-website-brand/showcase-page-content.md` (11,984 bytes)
+- Complete content for all 9 sections — zero placeholders
+- 4 paragraphs for The Thesis explaining the "one developer + AI" concept
+- 6 detailed step descriptions for How It Works
+- Full case study write-up with metrics table
+- 6 technology descriptions for the stack
+- 6 numbered findings with explanatory paragraphs
+- Verified: no sales language (buy, pricing, get started) present
+
+**Created:** `tasks/ws1-website-brand/interactive-element-spec.md` (9,909 bytes)
+- Agent workflow visualization using Canvas API (2D)
+- Hero version: ambient node graph with particle animation
+- Interactive version: clickable nodes with info panels showing real Ralph data
+- Mobile fallback: static SVG + step cards (no Canvas on mobile)
+- Zero external dependencies — native Canvas API only
+- Accessibility: keyboard navigation, aria labels, reduced-motion support
+- Performance: <5KB gzipped, 60fps, <2MB memory
+
+**Validation summary:**
+- All 12 files created across 4 stories
+- Total output: ~96KB of structured markdown and JSON
+- No placeholder text, no sales language
+- JSON validates, hex codes are valid, font recommendations are free/Google Fonts
+- Sitemap has 14 pages (need 8+), service mapping has 7 areas (need 5+)
+Output summary: All four user stories now have `passes: true`:
+
+- **US-WS1-001:** Tribe AI audit, service mapping (7 areas), and sitemap (14 pages) — 3 files created
+- **US-WS1-002:** Subscriber capture design doc and landing page copy — 2 files created  
+- **US-WS1-003:** Brand identity guidelines, colors JSON (9 colors), and tone of voice guide — 3 files created
+- **US-WS1-004:** Showcase page spec, complete content, and interactive element spec — 3 files created
+
+Total: 12 files, ~96KB of structured content,...
+
+✅ COMPLETED at iteration 1
+
+## Iteration 1 — Tue Feb  3 10:14:29 AM GMT 2026
+Working on: US-WS2-005: Map All Paid Subscriptions & Content Inventory
+
+## Iteration — US-WS2-005, US-WS2-006, US-WS2-007, US-WS2-008 Complete
+**Stories:** All four — Content Inventory, BrowserUse POC, 1% Better Playbook, Knowledge Base Ingestion
+**Status:** ALL PASSED
+
+### US-WS2-005: Map All Paid Subscriptions & Content Inventory
+**Created:** `tasks/ws2-content-pipeline/content-inventory.md` (~8KB)
+- Audited 2 Skool.com subscriptions (AI Dev/Automation + Content Creation/Branding)
+- Cataloged ~10 courses, ~82-107 modules, ~42-60 hours of video
+- Each subscription has: URL, platform, course names, module counts, content types, video hour estimates
+- Content format breakdown with extraction difficulty ratings
+- Priority ranking: 3-tier system (10 courses ranked) based on Deepify service area alignment
+- Tagged all courses by Deepify service area (7 areas)
+- Notes on extraction challenges (auth walls, DRM, transcript quality)
+
+**Acceptance criteria met:**
+- content-inventory.md exists with complete subscription list ✓
+- Each subscription has: URL, course names, module count, content types ✓
+- Estimated total volume documented ✓ (~42-60 hrs video, ~50-80 docs)
+- Priority ranking included ✓ (3 tiers, 10 courses ranked)
+- Tagged by Deepify service area ✓ (7 areas mapped)
+
+### US-WS2-006: BrowserUse Extraction POC — Single Course Module
+**Created:** `skills/content-pipeline/scripts/extract_module.py` (~350 lines, syntax valid)
+- Full Playwright-based extraction pipeline for Skool.com
+- 5-step process: login → navigate → video URL → transcript → screenshots
+- Login handles email/password form with fallback navigation detection
+- Video extraction: HTML5 video, iframe embeds (Vimeo/Wistia/YouTube), regex source search
+- Transcript extraction: 9 CSS selectors for common patterns, page text fallback, cleaning pipeline
+- Screenshot capture: full-page + scrolling viewport captures
+- Error handling: auth failures (RuntimeError), missing content (graceful None), partial metadata on failure
+- Credentials from env vars (SCHOOL_EMAIL, SCHOOL_PASSWORD) — never hardcoded
+
+**Created:** `skills/content-pipeline/README.md` (~2KB)
+- Setup instructions (prerequisites, credentials)
+- Usage with CLI arguments
+- Output structure documentation
+- 8 known limitations documented
+- Links to related skills and pipeline components
+
+**Created:** Directory structure `capture/school/example-course/example-module/{video,transcript,screenshots}/`
+
+**Acceptance criteria met:**
+- extract_module.py exists and is syntactically valid ✓ (py_compile passed)
+- Script handles: login, navigation, video URL capture, transcript extraction, screenshot capture ✓
+- Output structure defined: capture/school/{course}/{module}/ with video/, transcript/, screenshots/ ✓
+- README.md documents how to run and known limitations ✓
+- Error handling for auth failures and missing content ✓
+
+### US-WS2-007: Define the 1% Better Playbook
+**Created:** `tasks/ws2-content-pipeline/one-percent-better-playbook.md` (~8KB)
+- Philosophy section grounded in Jake's own words from voice brainstorm
+- 4-step framework: Extract → Contextualize (real-world scenario) → Clarify (improved explanation) → Demonstrate (demo concept)
+- Each step has specific rules, output format, and quality guidelines
+- 10 measurable criteria for "1% better" (5 must-have, 5 nice-to-have)
+- Quality checklist (10 items) for post-transformation review
+- Fully worked example: "RAG Retrieval with Reranking" — all 4 steps completed using Jake's actual Second Brain and ChromaDB setup
+- Integration note: 1% Better sits between extraction and Buffalo Pipeline
+- "What this framework is NOT" section to prevent scope creep
+
+**Acceptance criteria met:**
+- one-percent-better-playbook.md exists ✓
+- Template included: original → scenario → explanation → demo concept ✓
+- One fully worked example ✓ (RAG reranker, all 4 steps)
+- Criteria for 1% better defined with measurable indicators ✓ (10 criteria)
+- Framework is practical and actionable ✓ (rules, checklists, real examples)
+
+### US-WS2-008: Knowledge Base Ingestion Process
+**Created:** `tasks/ws2-content-pipeline/ingestion-process.md` (~8KB)
+- Full ingestion format with JSON schema mapping to ExtractedContent dataclass
+- Naming conventions table (content IDs, slugs, file paths)
+- Directory structure per module (metadata, video, transcript, screenshots, enriched)
+- Tagging scheme: 7 primary categories (Deepify service areas) + free-form secondary tags + quality tags
+- Integration with existing ChromaDB + SQLite + Sentence-Transformers infrastructure
+- Domain mapping to ChromaDB collections
+- Search flow diagram (query → encode → search → metadata → rerank → results)
+- Complete example walkthrough: "Module 7: Adding a Reranker" — all 6 steps (extract, metadata, enrich, update, ingest, verify)
+- Python code examples using actual capture pipeline classes
+- Process cheat sheet (7-step summary)
+
+**Acceptance criteria met:**
+- ingestion-process.md exists with full process documentation ✓
+- Ingestion format defined ✓ (JSON schema, naming conventions, directory structure)
+- Tagging and categorization scheme documented ✓ (7 primary + secondary + quality tags)
+- Integration with existing vector memory system described ✓ (ChromaDB, SQLite, Sentence-Transformers)
+- One example ingestion walkthrough included ✓ (RAG reranker module, 6 steps with code)
+
+**Validation summary:**
+- All 5 files created across 4 stories
+- Python script passes `py_compile` syntax check
+- Total output: ~35KB of structured markdown and Python
+- Content grounded in actual codebase (capture pipeline, ChromaDB, Buffalo processors)
+- No placeholder text, all examples use real Deepify projects
+Output summary: All four user stories now have `passes: true`:
+
+- **US-WS2-005:** Content inventory with 2 Skool.com subscriptions, ~10 courses, ~82-107 modules, ~42-60 hrs video, priority ranked and tagged by Deepify service area
+- **US-WS2-006:** Playwright extraction script (350 lines, syntax valid) with login, navigation, video/transcript/screenshot capture, README with setup and 8 known limitations
+- **US-WS2-007:** 4-step "1% Better" framework with 10 measurable criteria, quality checklist, and fully work...
+
+✅ COMPLETED at iteration 1
+
+## Iteration 1 — Tue Feb  3 10:52:49 AM GMT 2026
+Working on: US-WS3-009: Audit & Prep 12 Development Journal Sessions
+
+## Iteration — US-WS3-009, US-WS3-010, US-WS3-011, US-WS3-012 Complete
+**Stories:** All four — Session Audit, Intro Script, Content Calendar, First 3 Posts
+**Status:** ALL PASSED
+
+### US-WS3-009: Audit & Prep 12 Development Journal Sessions
+**Created:** `tasks/ws3-linkedin/session-audit.md` (~16KB)
+- Cataloged all 16 voice brainstorm sessions from `capture/voice-brainstorms/`
+- 12 substantive sessions identified (8 ready, 2 need editing, 2 need context, 4 not suitable)
+- Each session has: title, file reference, date, agent, duration estimate, topic summary, key quotes, publishability assessment
+- Suggested 12-session publish order with narrative arc rationale
+- Sensitive content notes flagged (paid platform references, pricing mentions, employment status)
+
+**Acceptance criteria met:**
+- session-audit.md exists listing all available sessions ✓ (16 sessions)
+- Each session has: title, duration, topic summary, key quotes/moments ✓
+- Publishability assessment for each ✓ (ready/needs editing/needs context/not suitable)
+- Suggested publish order included ✓ (12 sessions ordered)
+- Minimum 8 sessions cataloged ✓ (16 cataloged, 12 substantive)
+
+### US-WS3-010: Write Introductory Script
+**Created:** `tasks/ws3-linkedin/intro-script.md` (~5KB)
+- Video/audio script: ~218 words, ~75 seconds at natural pace
+- LinkedIn text post version: ~268 words
+- Both versions open with sensory overload problem, cite 40+ research sources
+- Uses Jake's actual words: "It's been there from the beginning. It's not an afterthought."
+- Introduces Alex and team-in-a-box concept
+- Ends with hook: "Follow along if that sounds worth watching"
+- Visual accompaniment suggestions included
+- Voice/tone guidance for delivery
+
+**Acceptance criteria met:**
+- intro-script.md exists with complete script ✓
+- Script is 60-90 seconds for video (~75s) OR ~300 words for text (~268 words) ✓
+- Opens with the problem: sensory overload ✓
+- States empathetic design was foundational, with research sources cited ✓
+- Introduces Alex and team-in-a-box ✓
+- Ends with a hook to follow the journey ✓
+
+### US-WS3-011: LinkedIn Content Calendar — First 4 Weeks
+**Created:** `tasks/ws3-linkedin/content-calendar.md` (~9KB)
+- 4-week calendar: 10 Feb — 7 Mar 2026
+- 12 posts total (3 per week: Mon/Wed/Fri)
+- Content types: 6 text posts (50%), 3 video (25%), 3 audio+text (25%)
+- Intro post scheduled first (Post 1, Mon 10 Feb)
+- Narrative arc: Introduction → Philosophy → Architecture → Building → Reflections
+- Each post has: type, source session, topic, description, media notes
+
+**Created:** `tasks/ws3-linkedin/hashtag-strategy.md` (~4KB)
+- 3-tier hashtag system: Brand (3), Topic (20+), Situational (4)
+- Tagging rules and tag-per-post limits
+- Example combinations for 4 post types
+
+**Acceptance criteria met:**
+- content-calendar.md exists with 4-week plan ✓
+- 8-12 posts planned total ✓ (12 posts, 3/week)
+- Each post has: type, source session, topic, draft description ✓
+- Intro post scheduled first ✓ (Post 1, Week 1)
+- Mix of content types ✓ (text, video, audio)
+- Hashtag and tagging strategy defined ✓ (separate file)
+
+### US-WS3-012: Draft First 3 LinkedIn Posts
+**Created:** `tasks/ws3-linkedin/posts/post-01-intro.md` (~4KB)
+- Full intro post: "Why Empathetic Design Matters"
+- Body text, hashtags, media notes, alt text, accessibility considerations, caption suggestions
+
+**Created:** `tasks/ws3-linkedin/posts/post-02-journal.md` (~3KB)
+- Dev journal post: "The Marginal Gains Philosophy"
+- Text-only thought leadership piece with source material references
+
+**Created:** `tasks/ws3-linkedin/posts/post-03-journal.md` (~5KB)
+- Dev journal post: "How We Capture Everything (The Buffalo Framework)"
+- Audio clip + text description format with engagement notes
+
+**Acceptance criteria met:**
+- post-01-intro.md exists with complete post draft ✓
+- post-02-journal.md exists with complete post draft ✓
+- post-03-journal.md exists with complete post draft ✓
+- Each post has: title, body text, hashtags, media notes ✓
+- All posts framed as educational, not promotional ✓
+- Accessibility considerations noted (alt text, caption suggestions) ✓
+
+**Validation summary:**
+- All 7 files created across 4 stories
+- Total output: ~46KB of structured markdown
+- All content grounded in Jake's actual voice brainstorm transcripts
+- Jake's own words used wherever possible
+- No sales language, no promotional content
+- Accessibility considerations on every post draft
+- Content calendar uses specific dates (10 Feb — 7 Mar 2026)
+Output summary: All four user stories now have `passes: true`:
+
+- **US-WS3-009:** Session audit with 16 sessions cataloged (12 substantive), publishability assessments, and suggested publish order
+- **US-WS3-010:** Intro script in two versions (video ~75 seconds / text ~268 words), grounded in Jake's own words
+- **US-WS3-011:** 4-week content calendar with 12 posts (3/week), content type mix (text/video/audio), and hashtag strategy
+- **US-WS3-012:** 3 complete post drafts with body text, hashtags, media notes, ...
+
+✅ COMPLETED at iteration 1
+
+## Iteration 1 — Tue Feb  3 01:01:04 PM GMT 2026
+Working on: US-WS4-013: Research Short-Form Conversion Tools & Methods
+
+## Iteration — US-WS4-013, US-WS4-014, US-WS4-015, US-WS4-016 Complete
+**Stories:** All four — Tool Research, Content Converter POC, Personal Site Audit, YouTube Strategy
+**Status:** ALL PASSED
+
+### US-WS4-013: Research Short-Form Conversion Tools & Methods
+**Created:** `tasks/ws4-shortform/tool-research.md` (~12KB)
+- Evaluated 7 tools/approaches: Opus Clip, Descript, Headliner, Vidyo.ai, Kapwing, Avatar tools (Synthesia/HeyGen), Transcript+LLM
+- Each with pros, cons, pricing, best-for use case, time estimates
+- Comparison matrix covering 10 features across all tools
+- Recommended two-stage pipeline: Transcript+LLM extraction (Stage 1) → Descript/Headliner for clip creation (Stage 2)
+- Avatar assessment: not recommended as primary method — loses Jake's authentic conversational tone
+- Time estimates: manual ~55min, semi-automated ~30min, fully automated ~15min per session
+
+**Acceptance criteria met:**
+- tool-research.md exists with comprehensive report ✓
+- At least 5 tools evaluated with pros/cons/pricing ✓ (7 tools)
+- Covers AI clip extraction, manual editing, avatar-based summarization ✓
+- Recommended approach for Deeperfire AI content specifically ✓ (two-stage pipeline)
+- Estimated time per conversion (manual vs automated) ✓
+
+### US-WS4-014: Build Short-Form Conversion Skill (POC)
+**Created:** `skills/content-converter/SKILL.md` — Skill definition with purpose, input/output, usage examples
+**Created:** `skills/content-converter/scripts/extract-highlights.py` (~450 lines, syntax valid)
+- Parses voice-brainstorm markdown transcripts
+- Scores turns by: speaker priority, substance, insight phrases, personal experience, Deepify themes
+- Extracts top 3 non-overlapping highlights with timestamps
+- Extracts 3 quote cards scored by standalone readability
+- Generates LinkedIn summary with hook, body, takeaways, hashtags
+- Outputs markdown or JSON format
+- CLI with argparse: --input, --format, --output-dir, --title, --date, --agent
+- Clean text function removes filler words and stutters
+
+**Created:** `skills/content-converter/templates/quote-card.md` — Visual spec for quote cards
+**Created:** `skills/content-converter/templates/linkedin-summary.md` — Template with structure and rules
+**Created:** `skills/content-converter/README.md` — Full documentation with usage, input/output format, selection criteria
+**Created:** `skills/content-converter/examples/extraction-2025-12-31.md` — Real example output from Brand Values brainstorm session
+
+**Acceptance criteria met:**
+- SKILL.md exists with skill documentation ✓
+- extract-highlights.py exists and is syntactically valid ✓ (py_compile passed)
+- Script accepts transcript text, outputs highlights + quote cards + LinkedIn summary ✓
+- README documents input/output format and how to run ✓
+- At least one example output in examples/ ✓
+
+### US-WS4-015: Personal Site & CV Alignment Audit
+**Created:** `tasks/ws4-shortform/personal-site-audit.md` (~8KB)
+- Documented current site content (confirmed and likely sections)
+- Identified 6 gap areas: current role, company connections, certifications, portfolio, blog, professional summary
+- 12 action items prioritized as High/Medium/Lower
+- Link strategy diagram showing personal site → Deepify AI → Deeperfire AI → YouTube → GitHub connections
+- Mobile responsiveness checklist (7 items)
+- 3 blog integration options: Daily Avatars feed, Dev Journal highlights, Content Aggregator (recommended)
+
+**Acceptance criteria met:**
+- personal-site-audit.md exists with full audit ✓
+- Current site content documented ✓
+- Action items list: what needs updating to match current CV ✓ (12 items)
+- Link strategy: how personal site connects to Deepify AI, Deeperfire AI, YouTube ✓
+- Mobile responsiveness noted ✓ (7-point checklist)
+- Recommendations for blog integration ✓ (3 options with recommendation)
+
+### US-WS4-016: YouTube Channel Strategy & Setup Plan
+**Created:** `tasks/ws4-shortform/youtube-strategy.md` (~14KB)
+- Content strategy: YouTube (long-form HQ) vs LinkedIn (clips/summaries) vs Website (curated best)
+- 5 cross-platform rules for content distribution
+- 5 playlists defined: Dev Journals, R&D Showcases, Tutorials & How-To, Behind the Scenes, Shorts
+- Branding: banner spec (2560×1440), profile image spec, full channel description draft, channel keywords
+- First 5 video upload plan with titles, descriptions, and thumbnail concepts
+- YouTube SEO: title optimization, description structure, tags strategy, thumbnail rules, upload timing
+
+**Acceptance criteria met:**
+- youtube-strategy.md exists with full strategy ✓
+- Content strategy: what goes on YouTube vs LinkedIn vs website ✓ (3-platform comparison table)
+- Playlist structure defined ✓ (5 playlists with descriptions)
+- Branding recommendations ✓ (banner, profile, description, keywords)
+- First 5 video upload plan ✓ (titles, descriptions, thumbnail concepts)
+- YouTube SEO basics included ✓ (tags, descriptions, keywords, timing)
+
+**Validation summary:**
+- All 9 files created across 4 stories
+- Python script passes py_compile and produces real output from sample transcript
+- Total output: ~50KB of structured markdown + Python
+- Tool research covers real tools with real pricing
+- Content grounded in Jake's actual voice brainstorm sessions
+Output summary: All four user stories now have `passes: true`:
+
+- **US-WS4-013:** Tool research with 7 tools evaluated (Opus Clip, Descript, Headliner, Vidyo.ai, Kapwing, Avatar tools, Transcript+LLM), comparison matrix, and recommended two-stage pipeline
+- **US-WS4-014:** Content Converter skill with `extract-highlights.py` (450 lines, syntax valid), templates, README, and real example output from Brand Values brainstorm
+- **US-WS4-015:** Personal site audit with 12 prioritized action items, link strategy diag...
+
+✅ COMPLETED at iteration 1
+
+## Iteration 1 — Wed Feb  4 09:20:23 AM GMT 2026
+Working on: COUNCIL-001: LLM Council: Core Engine — Parallel Model Dispatch
+
+## Iteration — COUNCIL-001, COUNCIL-002, COUNCIL-003 Complete
+**Stories:** All three — Core Engine, Judge System, CLI Wrapper + Logging
+**Status:** ALL PASSED
+
+### COUNCIL-001: Core Engine — Parallel Model Dispatch
+**Created:** `scripts/council/config.json` (1,608 bytes)
+- 7 model definitions: llama3.1:70b, gemma2:9b, jake-model (local), claude-sonnet, gemini-pro, gpt-4o, perplexity (cloud)
+- Each model has: name, short_name, provider, endpoint, model_id, is_local
+- Defaults section: default model selection, judge, mode, timeout
+
+**Created:** `scripts/council/council.py` (9,432 bytes, syntax valid)
+- Loads API keys from /home/deepifyai/Documents/code/.env using dotenv
+- Async parallel dispatch using asyncio + aiohttp
+- Provider handlers: ollama (localhost:11434), anthropic, openai, google gemini, perplexity
+- ModelResponse dataclass: model_name, response_text, latency_ms, tokens, error
+- Model selection: --local (ollama only), --all (everything), --models (comma-separated short names)
+- 60s timeout per model with graceful error handling
+- resolve_models() maps short names and flags to model configs
+
+**Acceptance criteria met:**
+- config.json exists with model definitions (ollama local + cloud providers) ✓
+- council.py exists and is syntactically valid Python ✓ (py_compile passed)
+- Loads API keys from .env ✓ (dotenv)
+- Async parallel dispatch using asyncio + aiohttp ✓
+- Ollama hits localhost:11434, cloud models use appropriate endpoints ✓
+- ModelResponse includes: response text, model name, latency_ms ✓
+- Supports --local, --all, --models flags ✓
+- 60s timeout per model ✓
+
+### COUNCIL-002: Judge System — Score, Compare, Synthesise
+**Created:** `scripts/council/prompts/best_of_n.txt` — Score 1-10 on accuracy/completeness/clarity, pick winner
+**Created:** `scripts/council/prompts/synthesis.txt` — Extract best parts, weave into superior answer
+**Created:** `scripts/council/prompts/consensus.txt` — Identify agreed facts, flag disputes
+**Created:** `scripts/council/prompts/debate.txt` — Evaluate arguments, declare winner
+
+**Created:** `scripts/council/judge.py` (7,597 bytes, syntax valid)
+- Takes: original prompt, ModelResponse list, mode (best_of_n/synthesis/consensus/debate), judge_model
+- Judge model options: 70b (local default), opus (Anthropic), sonnet (Anthropic)
+- Loads prompt template, injects model responses, calls judge
+- JudgeOutput dataclass: final_answer, scores, reasoning, mode, judge_model, latency_ms
+- Robust JSON extraction with code block handling and brace matching
+- 120s timeout for judge (longer than dispatch since it processes all responses)
+
+**Acceptance criteria met:**
+- judge.py exists and is syntactically valid Python ✓
+- prompts/ directory exists with 4 template files ✓
+- Templates: best_of_n.txt, synthesis.txt, consensus.txt, debate.txt ✓
+- Judge takes: original prompt, ModelResponse list, mode, judge_model ✓
+- Supports --judge opus, --judge sonnet, --judge 70b ✓
+- Returns JudgeOutput with final_answer, scores, reasoning, mode ✓
+- Judge outputs structured JSON ✓
+
+### COUNCIL-003: CLI Wrapper + Logging
+**Created:** `scripts/council/cli.py` (5,701 bytes, syntax valid)
+- Argparse CLI: prompt, --mode, --judge, --models, --local, --all, --verbose
+- Default mode: synthesis, default judge: 70b
+- Pretty-print: judge's final answer, scores, reasoning
+- --verbose shows individual model responses
+- Cost estimate and total latency at end
+- Two-phase execution: dispatch → judge
+
+**Created:** `scripts/council/logger.py` (1,568 bytes, syntax valid)
+- Saves deliberation to dashboard/data/council/YYYY-MM-DD-HHMMSS.json
+- Includes: prompt, mode, judge_model, all model responses, judge output, timing, cost estimate
+- Creates directory if not exists
+
+**Created:** `scripts/council/run.sh` (505 bytes, executable)
+- Sources .env, cd to script dir, runs python3 cli.py "$@"
+
+**Acceptance criteria met:**
+- cli.py exists and is syntactically valid Python ✓
+- logger.py exists and is syntactically valid Python ✓
+- run.sh exists and is executable ✓
+- CLI supports: prompt, --mode, --judge, --models, --local, --all, --verbose ✓
+- Deliberation logs saved to dashboard/data/council/ as timestamped JSON ✓
+- run.sh sources .env and runs cli.py ✓
+- Pretty-print output with judge's final answer ✓
+
+**Validation summary:**
+- All 9 files created across 3 stories (config.json, council.py, judge.py, cli.py, logger.py, run.sh, 4 prompt templates)
+- All 4 Python files pass py_compile syntax check
+- config.json is valid JSON
+- run.sh is executable
+- Total output: ~26KB of Python + JSON + templates
+Output summary: All three user stories now have `passes: true`:
+
+- **COUNCIL-001:** Core Engine — config.json with 7 models (3 local, 4 cloud) + council.py with async parallel dispatch via aiohttp, model selection flags, 60s timeout
+- **COUNCIL-002:** Judge System — 4 prompt templates (best_of_n, synthesis, consensus, debate) + judge.py with configurable judge models (70b/opus/sonnet), structured JSON output
+- **COUNCIL-003:** CLI + Logging — cli.py with full argparse CLI + pretty-print, logger.py saving timest...
+
+✅ COMPLETED at iteration 1
+
+## Iteration 1 — Wed Feb  4 01:56:08 PM GMT 2026
+Working on: COACHING-001: Landing Page — Executive AI Coaching
+
+## Iteration 1 — Tue Feb 10 10:00:27 PM GMT 2026
+Working on: SWARM-001: Agent Swarm Orchestrator - Base Implementation
+Output summary: Invalid API key · Fix external API key...
+
+## Iteration 2 — Tue Feb 10 10:00:32 PM GMT 2026
+Working on: SWARM-001: Agent Swarm Orchestrator - Base Implementation
+Output summary: Invalid API key · Fix external API key...
+
+## Iteration 3 — Tue Feb 10 10:00:38 PM GMT 2026
+Working on: SWARM-001: Agent Swarm Orchestrator - Base Implementation
+Output summary: Invalid API key · Fix external API key...
+Max iterations reached
