@@ -1,0 +1,78 @@
+{
+  "title": "Swarm Configuration Builder",
+  "description": "Build UI to define agent roles, capabilities, task routing rules, and model assignments for swarms. Save/load swarm configurations.",
+  "priority": "high",
+  "context": "Users need an easy way to create swarm configurations without writing code. This tool lets them pick agents, assign roles, set routing rules, and save configs for reuse.",
+  "requirements": [
+    "Create SwarmConfig page component in deepify-ai/src/pages/swarm-config.tsx",
+    "Agent selector: drag-and-drop or multi-select from employeeData.ts (all 28 agents)",
+    "Role assignment: designate which agent is orchestrator vs workers",
+    "Capability editor: define what each agent can do in this swarm",
+    "Task routing rules editor: create rules for which worker handles which task type",
+    "Model assignment UI: select Opus 4.6 or Sonnet 4.5 per agent (default: orchestrator=Opus, workers=Sonnet)",
+    "Save configuration to JSON file",
+    "Load existing configurations from file or database",
+    "Configuration validation: ensure at least 1 orchestrator, at least 1 worker, no duplicate roles",
+    "Preview mode: show swarm structure before saving"
+  ],
+  "acceptance_criteria": [
+    "SwarmConfig page renders without errors",
+    "Can select agents from full employee list (28 agents)",
+    "Can assign orchestrator role to 1 agent",
+    "Can assign worker roles to multiple agents",
+    "Can define capabilities for each agent (text input or predefined list)",
+    "Can create task routing rules (if task type X, assign to agent Y)",
+    "Can override model assignment (Opus vs Sonnet) per agent",
+    "Save button creates valid JSON config file",
+    "Load button imports existing config and populates UI",
+    "Validation prevents invalid configs (errors shown clearly)",
+    "Preview shows swarm structure diagram",
+    "Follows Team in a Box design system"
+  ],
+  "technical_notes": {
+    "file_path": "deepify-ai/src/pages/swarm-config.tsx",
+    "dependencies": [
+      "employeeData.ts for agent list",
+      "SwarmOrchestrator types for config structure"
+    ],
+    "config_schema": {
+      "name": "string (user-defined swarm name)",
+      "orchestrator": "{ agentId, model }",
+      "workers": "Array<{ agentId, model, capabilities, routingRules }>",
+      "defaultModel": "opus-4-6 | sonnet-4-5",
+      "created": "timestamp",
+      "updated": "timestamp"
+    },
+    "ui_components": [
+      "AgentSelector (searchable list of all 28 agents)",
+      "RoleAssigner (drag agents into orchestrator/worker zones)",
+      "CapabilityEditor (text input or chips)",
+      "RoutingRulesBuilder (if-then rule creator)",
+      "ModelSelector (dropdown: Opus 4.6 or Sonnet 4.5)",
+      "ConfigPreview (visual diagram of swarm structure)",
+      "SaveLoadButtons (save to file, load from file)"
+    ]
+  },
+  "example_configs": [
+    {
+      "name": "Content Team",
+      "orchestrator": { "agentId": "cmo", "model": "opus-4-6" },
+      "workers": [
+        { "agentId": "content-creator-ai", "model": "sonnet-4-5", "capabilities": ["writing", "editing"] },
+        { "agentId": "social-media-manager", "model": "sonnet-4-5", "capabilities": ["posting", "scheduling"] },
+        { "agentId": "campaign-optimizer", "model": "sonnet-4-5", "capabilities": ["analytics", "optimization"] }
+      ]
+    },
+    {
+      "name": "Dev Team",
+      "orchestrator": { "agentId": "cto", "model": "opus-4-6" },
+      "workers": [
+        { "agentId": "code-assistant", "model": "sonnet-4-5", "capabilities": ["coding", "debugging"] },
+        { "agentId": "code-reviewer-agent", "model": "sonnet-4-5", "capabilities": ["review", "quality"] },
+        { "agentId": "system-monitor", "model": "sonnet-4-5", "capabilities": ["monitoring", "alerts"] }
+      ]
+    }
+  ],
+  "estimated_time": "3-4 hours",
+  "validation": "Create a swarm config via UI, save it, reload page, load the config, verify all settings populate correctly. Then use that config to start a swarm."
+}

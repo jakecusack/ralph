@@ -1,0 +1,55 @@
+{
+  "title": "Multi-Agent Chat Interface",
+  "description": "Build real-time UI for viewing swarm activity, agent status, task flow, and message history between agents",
+  "priority": "high",
+  "context": "Once swarms are running, we need visibility into what's happening. This UI shows swarm orchestration in action - who's working on what, messages between agents, and progress toward goals.",
+  "requirements": [
+    "Create SwarmChat page component in deepify-ai/src/pages/swarm-chat.tsx",
+    "Display list of active swarms with status (idle/working/blocked/complete)",
+    "Agent status indicators for each swarm participant",
+    "Task flow visualization showing orchestrator → workers relationship",
+    "Real-time message history between agents (scrollable log)",
+    "Filter messages by agent, type, or time range",
+    "Visual distinction between orchestrator (Opus) and workers (Sonnet)",
+    "Progress bars for task completion",
+    "Ability to select a swarm and drill into details"
+  ],
+  "acceptance_criteria": [
+    "SwarmChat page renders without errors",
+    "Shows list of swarms with basic info (name, status, participants)",
+    "Agent cards display current status (idle/working/blocked/done)",
+    "Message log shows agent-to-agent communication in chronological order",
+    "Can filter messages by agent or message type",
+    "Visual hierarchy clearly shows orchestrator vs workers",
+    "Updates in real-time as swarm progresses (use React state/hooks)",
+    "Responsive design works on desktop",
+    "Follows Team in a Box design system"
+  ],
+  "technical_notes": {
+    "file_path": "deepify-ai/src/pages/swarm-chat.tsx",
+    "dependencies": [
+      "SwarmOrchestrator from lib/swarm/orchestrator.ts",
+      "React hooks (useState, useEffect) for real-time updates",
+      "Existing UI components from Team in a Box"
+    ],
+    "ui_components": [
+      "SwarmList (shows active swarms)",
+      "AgentStatusCard (shows agent name, status, current task)",
+      "MessageLog (scrollable message history)",
+      "TaskFlowDiagram (visual representation of orchestrator → workers)",
+      "FilterControls (filter messages)"
+    ],
+    "data_structure": {
+      "swarms": "Array of active swarms from orchestrator",
+      "messages": "Array of SwarmMessage objects",
+      "agents": "Array of participating agents with current status"
+    }
+  },
+  "design_notes": {
+    "layout": "Left sidebar: swarm list, Main area: selected swarm details, Right panel: agent status cards",
+    "colors": "Orchestrator = blue, Workers = green, Errors = red, Completed = gray",
+    "icons": "Use emoji or icon library for status (⏸️ idle, ⚙️ working, 🚫 blocked, ✅ done)"
+  },
+  "estimated_time": "2-3 hours",
+  "validation": "Open page in browser, start a test swarm, verify messages appear in real-time and agent status updates correctly."
+}

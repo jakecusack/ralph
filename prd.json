@@ -5,19 +5,42 @@
   "version": "1.0",
   "userStories": [
     {
-      "id": "SWARM-001",
-      "title": "Agent Swarm Orchestrator - Base Implementation",
-      "description": "Create the core swarm coordinator class that manages multi-agent task execution",
+      "id": "SWARM-001a",
+      "title": "SwarmOrchestrator Class Skeleton",
+      "description": "Create the SwarmOrchestrator class with constructor, types, and basic structure",
       "priority": 1,
       "acceptance_criteria": [
         "SwarmOrchestrator class exists in src/lib/swarm/orchestrator.ts",
-        "Can create a swarm with 1 orchestrator + N workers",
-        "Task assignment and progress monitoring works",
-        "Messages flow between orchestrator and workers",
-        "Results aggregate correctly",
-        "Model routing assigns Opus vs Sonnet appropriately"
+        "Types defined: SwarmConfig, SwarmAgent, SwarmTask, SwarmResult",
+        "Constructor accepts config with orchestrator model and worker model",
+        "Class has placeholder methods: addWorker(), assignTask(), getStatus()"
       ],
-      "prp_file": "prps/swarm-orchestrator.json",
+      "passes": false
+    },
+    {
+      "id": "SWARM-001b",
+      "title": "Swarm Worker Management",
+      "description": "Implement worker creation, registration, and status tracking",
+      "priority": 2,
+      "acceptance_criteria": [
+        "addWorker() creates a worker with id, role, and model assignment",
+        "getWorkers() returns list of registered workers with status",
+        "removeWorker() removes a worker by id",
+        "Worker status tracks: idle, busy, error"
+      ],
+      "passes": false
+    },
+    {
+      "id": "SWARM-001c",
+      "title": "Task Assignment and Message Flow",
+      "description": "Implement task assignment to workers and message passing between orchestrator and workers",
+      "priority": 3,
+      "acceptance_criteria": [
+        "assignTask() assigns a task to an idle worker",
+        "Messages array tracks all orchestrator-worker communication",
+        "Task results aggregate into a SwarmResult object",
+        "Model routing: orchestrator uses Opus, workers use Sonnet"
+      ],
       "passes": false
     },
     {

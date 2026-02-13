@@ -1,0 +1,44 @@
+{
+  "title": "Agent Swarm Orchestrator - Base Implementation",
+  "description": "Create the core swarm coordinator class that manages multi-agent task execution with Opus orchestrator and Sonnet workers",
+  "priority": "high",
+  "context": "Team in a Box has 28 agents defined in employeeData.ts. We need orchestration layer to coordinate them in swarms. Opus 4.6 = orchestrators, Sonnet 4.5 = workers.",
+  "requirements": [
+    "Create SwarmOrchestrator class in deepify-ai/src/lib/swarm/orchestrator.ts",
+    "Implement agent-to-agent communication protocol (SwarmMessage interface)",
+    "Build task queue system (SwarmTask interface with parallel/sequential/conditional types)",
+    "Worker pool management (assign tasks to available agents)",
+    "Basic orchestration logic: task assignment, progress monitoring, result aggregation",
+    "Model routing: Opus for orchestrators, Sonnet for workers",
+    "Error handling and retry logic",
+    "Status tracking for each task/subtask"
+  ],
+  "acceptance_criteria": [
+    "SwarmOrchestrator class exists and is well-documented",
+    "Can create a swarm with 1 orchestrator + N workers",
+    "Can assign tasks to workers and track completion",
+    "Messages flow between orchestrator and workers",
+    "Results aggregate back to orchestrator",
+    "Model routing logic correctly assigns Opus vs Sonnet",
+    "Basic error handling prevents crashes",
+    "Code follows TypeScript best practices"
+  ],
+  "technical_notes": {
+    "file_path": "deepify-ai/src/lib/swarm/orchestrator.ts",
+    "dependencies": ["employeeData.ts for agent definitions"],
+    "interfaces_needed": [
+      "SwarmMessage { from, to, type, payload, timestamp, threadId }",
+      "SwarmTask { id, type, orchestrator, workers, goal, subtasks, status, results }",
+      "SubTask { id, assignedTo, description, status, result }"
+    ],
+    "key_methods": [
+      "createSwarm(orchestratorId, workerIds, goal)",
+      "assignTask(taskId, agentId)",
+      "sendMessage(from, to, message)",
+      "aggregateResults(taskId)",
+      "getSwarmStatus(swarmId)"
+    ]
+  },
+  "estimated_time": "2-3 hours",
+  "validation": "Create simple test: 1 orchestrator + 2 workers completing a basic task (e.g., 'summarize this text'). Verify messages flow and results aggregate."
+}

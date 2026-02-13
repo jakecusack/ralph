@@ -1,0 +1,73 @@
+{
+    "project": "WS4 — Short-Form Pipeline, Personal Site & YouTube",
+    "description": "Research short-form tools, build content converter POC, personal site alignment, YouTube channel strategy",
+    "branchName": "ralph/ws4-shortform-pipeline",
+    "userStories": [
+        {
+            "id": "US-WS4-013",
+            "title": "Research Short-Form Conversion Tools & Methods",
+            "description": "Research tools and approaches for converting long-form video (6-7 min) and audio (13 min) into short-form social content (<60 sec clips, quote cards, carousel posts).",
+            "acceptanceCriteria": [
+                "tasks/ws4-shortform/tool-research.md exists with comprehensive report",
+                "At least 5 tools evaluated with pros/cons/pricing",
+                "Covers: AI clip extraction, manual editing, avatar-based summarization",
+                "Recommended approach for Deeperfire AI content specifically",
+                "Estimated time per conversion (manual vs automated)"
+            ],
+            "priority": 1,
+            "passes": false,
+            "prp": "ralph/prps/WS4-shortform-pipeline.md",
+            "notes": "Jake has 6-7 min videos and 13 min audio from NotebookLM dev journals. Needs social-length clips."
+        },
+        {
+            "id": "US-WS4-014",
+            "title": "Build Short-Form Conversion Skill (POC)",
+            "description": "Build a proof-of-concept skill that takes long-form content and produces short-form outputs: highlight clips, quote cards, LinkedIn text summary.",
+            "acceptanceCriteria": [
+                "skills/content-converter/SKILL.md exists with skill documentation",
+                "skills/content-converter/scripts/extract-highlights.py exists and is syntactically valid",
+                "Script accepts: transcript text input, outputs: highlight segments with timestamps, quote cards, LinkedIn summary",
+                "README documents input/output format and how to run",
+                "At least one example output included in skills/content-converter/examples/"
+            ],
+            "priority": 2,
+            "passes": false,
+            "prp": "ralph/prps/WS4-shortform-pipeline.md",
+            "notes": "Build on existing skills. This is a POC — transcript-based extraction first, video editing later."
+        },
+        {
+            "id": "US-WS4-015",
+            "title": "Personal Site & CV Alignment Audit",
+            "description": "Audit Jake's personal site repo. Ensure content matches current CV, links to Deepify AI and Deeperfire AI, is ready for recruiters/clients if needed.",
+            "acceptanceCriteria": [
+                "tasks/ws4-shortform/personal-site-audit.md exists with full audit",
+                "Current site content documented (what exists, what's missing)",
+                "Action items list: what needs updating to match current CV",
+                "Link strategy: how personal site connects to Deepify AI, Deeperfire AI, YouTube",
+                "Mobile responsiveness noted",
+                "Recommendations for blog integration (Daily Avatars or similar)"
+            ],
+            "priority": 3,
+            "passes": false,
+            "prp": "ralph/prps/WS4-shortform-pipeline.md",
+            "notes": "Jake mentioned personal site as professional anchor / safety net if employment changes."
+        },
+        {
+            "id": "US-WS4-016",
+            "title": "YouTube Channel Strategy & Setup Plan",
+            "description": "Define Deepify YouTube channel strategy. Content split vs LinkedIn. Branding, playlists, upload plan.",
+            "acceptanceCriteria": [
+                "tasks/ws4-shortform/youtube-strategy.md exists with full strategy",
+                "Content strategy: what goes on YouTube vs LinkedIn vs website",
+                "Playlist structure defined (e.g. Dev Journals, R&D Showcases, Tutorials)",
+                "Branding recommendations (banner, profile, description copy drafted)",
+                "First 5 video upload plan with titles, descriptions, thumbnails concepts",
+                "YouTube SEO basics included (tags, descriptions, keywords)"
+            ],
+            "priority": 4,
+            "passes": false,
+            "prp": "ralph/prps/WS4-shortform-pipeline.md",
+            "notes": "Jake called YouTube the 'HQ' for Deepify content. Separate from LinkedIn (Deeperfire AI)."
+        }
+    ]
+}
