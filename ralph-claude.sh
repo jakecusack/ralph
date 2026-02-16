@@ -96,8 +96,8 @@ for i in $(seq 1 $MAX_ITERATIONS); do
     '.state = $state | .iteration = $iter | .current = $current | .done = $done | .lastUpdate = now | .lastUpdateHuman = (now | strftime("%H:%M:%S"))' \
     "$STATUS_FILE" > "$STATUS_FILE.tmp" && mv "$STATUS_FILE.tmp" "$STATUS_FILE"
   
-  # Run claude with the ralph prompt
-  OUTPUT=$(cat "$SCRIPT_DIR/prompt.md" | claude --dangerously-skip-permissions 2>&1) || true
+  # Run claude with the ralph prompt (unset ANTHROPIC_API_KEY to use OAuth subscription)
+  OUTPUT=$(unset ANTHROPIC_API_KEY && cat "$SCRIPT_DIR/prompt.md" | claude --dangerously-skip-permissions 2>&1) || true
   echo "$OUTPUT"
   
   # Log output summary (first 500 chars)
