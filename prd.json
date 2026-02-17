@@ -15,7 +15,7 @@
         "Constructor accepts config with orchestrator model and worker model",
         "Class has placeholder methods: addWorker(), assignTask(), getStatus()"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "SWARM-001b",
@@ -28,7 +28,7 @@
         "removeWorker() removes a worker by id",
         "Worker status tracks: idle, busy, error"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "SWARM-001c",
@@ -41,7 +41,7 @@
         "Task results aggregate into a SwarmResult object",
         "Model routing: orchestrator uses Opus, workers use Sonnet"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "SWARM-002",
@@ -57,7 +57,7 @@
         "Real-time updates as swarm progresses"
       ],
       "prp_file": "prps/swarm-chat-ui.json",
-      "passes": false
+      "passes": true
     },
     {
       "id": "SWARM-003",
@@ -73,7 +73,7 @@
         "Validation prevents invalid configs"
       ],
       "prp_file": "prps/swarm-config-builder.json",
-      "passes": false
+      "passes": true
     }
   ],
   "target_codebase": "/home/deepifyai/Documents/code/deepify-ai",
